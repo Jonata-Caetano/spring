@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+    <context:annotation-config/>
+    <context:property-placeholder location="app.properties"/>
+
+    <bean name="customerRepository" 
+          class="com.tr.pluralsight.repository.HibernateCustomerRepositoryImpl">
+<!--        <property name="dbUserName" value="${dbUsername}"/>-->
+    </bean>
+
+    <bean name="customerService" 
+          class="com.tr.pluralsight.service.CustomerServiceImpl"
+          autowire="constructor"
+          scope="prototype">
+          <!-- Esta linha abaixo é para quando quer fazer a injenção pelo setter e não pelo construtor -->
+          <!--<property name="CustomerRepository" ref="customerRepository" />-->
+          <!--ESte código vai fazer a injenção do construtor, o index 0 é pq so tem uma propriedade no construtor da classe CustomerServiceImpl-->
+         <!--<constructor-arg index="0" ref="customerRepository" />--> 
+    </bean>
+</beans>
