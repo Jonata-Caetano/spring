@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  database:
+    image: postgres:11.8-alpine
+    container_name: "spring_r2dbc_db"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=spring_r2dbc_db
+    command:
+      - "postgres"
+      - "-c"
+      - "effective_cache_size=1024MB"
+    networks:
+      - network-backend
+    volumes:
+      - ./srv/docker/postgresql:/var/lib/postgresql
+      - ./database:/docker-entrypoint-initdb.d
+networks:
+  network-backend:
+    driver: bridge

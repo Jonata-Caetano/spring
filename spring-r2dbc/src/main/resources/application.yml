@@ -1,0 +1,13 @@
+# Database
+spring:
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/spring_r2dbc_db
+    username: postgres
+    password: password
+
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          r2dbc: DEBUG
