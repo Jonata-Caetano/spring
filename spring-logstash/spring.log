@@ -1,0 +1,4 @@
+2020-12-15 23:34:18.390  INFO 29048 --- [main] c.b.s.SpringLogstashApplication          : Starting SpringLogstashApplication using Java 1.8.0_252 on TR-2T9HP13 with PID 29048 (C:\fontes\r\java\spring\spring-logstash\build\classes\java\main started by 0181365 in C:\fontes\r\java\spring\spring-logstash)
+2020-12-15 23:34:18.393  INFO 29048 --- [main] c.b.s.SpringLogstashApplication          : No active profile set, falling back to default profiles: default
+2020-12-15 23:34:20.475  INFO 29048 --- [main] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port(s): 8080
+2020-12-15 23:34:20.482  INFO 29048 --- [main] c.b.s.SpringLogstashApplication          : Started SpringLogstashApplication in 2.634 seconds (JVM running for 3.58)
