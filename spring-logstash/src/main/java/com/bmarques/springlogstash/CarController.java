@@ -15,11 +15,7 @@ public class CarController {
   @GetMapping
   public Mono<Car> getCar() {
 
-    log.debug("Debug: Into getCar method!");
-    log.info("Info: Into getCar method!");
-    log.trace("Trace: Into getCar method!");
-    log.warn("Warn: Into getCar method!");
-    log.error("Error: Into getCar method!");
+    log.info("Info: Tiago!");
 
     return Mono.just(Car.builder()
                          .code(1)
