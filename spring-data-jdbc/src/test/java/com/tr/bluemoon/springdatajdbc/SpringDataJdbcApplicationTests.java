@@ -1,4 +1,4 @@
-package com.tr.bluemoon.springdatajdbc;
+/*package com.tr.bluemoon.springdatajdbc;
 
 import com.tr.bluemoon.springdatajdbc.services.car.Car;
 import com.tr.bluemoon.springdatajdbc.services.car.CarRepository;
@@ -62,3 +62,4 @@ class SpringDataJdbcApplicationTests {
     }
 
 }
+*/
