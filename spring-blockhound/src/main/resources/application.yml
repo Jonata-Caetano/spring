@@ -1,0 +1,16 @@
+# Database
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/poc-blockhound_db
+    username: postgres
+    password: password
+
+# RabbitMQ (default configuration)
+RabbitMQPassword: guest
+RabbitMQHostName: localhost
+RabbitMQManagementUriBase: http://localhost:15672/
+RabbitMQPort: 5672
+RabbitMQUserName: guest
+RabbitMQVirtualHostName:
+RabbitMQPublisherHost: localhost
+RabbitMQEnabled: false
