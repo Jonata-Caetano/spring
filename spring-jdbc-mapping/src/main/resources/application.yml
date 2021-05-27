@@ -1,0 +1,13 @@
+# Database
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/poc-jdbc-mapping_db
+    username: postgres
+    password: password
+
+# Logging
+logging:
+  level:
+    org.springframework.jdbc.core: TRACE
+#    org.springframework.jdbc.core.JdbcTemplate=TRACE, file
+#    org.springframew ork.jdbc.core.StatementCreatorUtils=TRACE, file
