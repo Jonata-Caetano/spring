@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  mockServer:
+    image: mockserver/mockserver:mockserver-5.11.0
+    container_name: "mockServer"
+    ports:
+      - 1080:1080
+    environment:
+      MOCKSERVER_PROPERTY_FILE: /config/mockserver/mockserver.properties
+      MOCKSERVER_INITIALIZATION_JSON_PATH: /config/mockserver/initializerJson.json
+    networks:
+      - network-backend
+    volumes:
+      - ./config:/config
+
+networks:
+  network-backend:
+    driver: bridge

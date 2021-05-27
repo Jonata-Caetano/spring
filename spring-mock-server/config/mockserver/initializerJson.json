@@ -1,0 +1,86 @@
+[
+  {
+    "httpRequest": {
+      "method": "GET",
+      "path": "/api/internalsecurity/.*"
+    },
+    "times": {
+      "unlimited": true
+    },
+    "httpResponse": {
+      "statusCode": 200,
+      "body": {
+        "type": "STRING",
+        "string": "{\"InfrastructureAccessControls\":[\"OffPremisesDeployment\",\"Platform_Enable2FA\",\"Platform_EnableTimeOut\",\"PlatformEnableRecaptcha\",\"AccountsIntegrationQB\",\"TimeAndBillingIntegrationQB\",\"TrialBalanceIntegrationQB\",\"WorkpapersIntegrationQB\",\"DMS_Akkadia\",\"BR_APIMenu\",\"BR_DMSFilterClientContacts\",\"BR_HideNewDashboard\",\"ClientCenterHideDiagnosticTool\",\"ClientCenterHideDocsFlatToggle\",\"DMS_DocumentDueDate\",\"DMS_FolderInheritPerms\",\"DMS_FolderTemplateGroupPermissions\",\"DMS_HideFolderTemplateManagement\",\"DMS_PrintUploadV2\",\"DMS_RemovePermanentlyDelete\",\"DMS_ResourceLocking\",\"DMS_ShowClientNickname\",\"DMS_ShowCreateDateColumn\",\"DMS_ShowOpenLocally\",\"DMS_SuppressDocumentLoadingInTree\",\"Firm_Dashboard\",\"IAC-PPE-AllowOverrides\",\"Notifications_DisableUnreadCounts\",\"Platform_CommonPasswordsFilter\",\"Platform_PermissionsLicenseCheck\",\"Platform_SystemGroups\",\"PPE-AccountSwitchingMerge\",\"QuickBooksOnlineIntegrationServices.Access\",\"BR_ConfigureAccountInformation\",\"ClientCenterVnext\",\"Platform_AuditEventServices\",\"PPE-AccountSwitching\",\"DMS_HideSearch\",\"DMS_HideRecentActivity\",\"DMS_HideRecycleBin\",\"DMS_HideOpenLocally\",\"BRNewsAccess\",\"BRBoxEAccess\",\"WorkpapersTickmarks\",\"Platform_EnableMFACards\",\"Platform_GranularPermissions\",\"Platform_AuthAggJWTKey\"]}",
+        "contentType": "application/json"
+      }
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "POST",
+      "path": "/api/security/.*"
+    },
+    "times": {
+      "unlimited": true
+    },
+    "httpResponse": {
+      "statusCode": 200,
+      "body": {
+        "type": "STRING",
+        "string": "{\"LongToken\": \"30E62FDB50CC4355B88331E3DADA244A\"}",
+        "contentType": "application/json"
+      }
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "GET",
+      "path": "/api/security/.*"
+    },
+    "times": {
+      "unlimited": true
+    },
+    "httpResponse": {
+      "statusCode": 200,
+      "body": {
+        "type": "STRING",
+        "string": "{\"UdsSession\":{\"SessionId\":\"2D5F65C045F746CBB5B5882FD09106C7\",\"PrismGuid\":\"5008A0C6795F434C87C784AF05918C8A\",\"OrphanExpiresDateTime\":\"2020-07-22T03:01:06.663Z\",\"SessionExpiresDateTime\":\"2020-07-22T18:11:06.663Z\",\"SeamlessAuthenticationToken\":\"29636B24413343D492953AA522D49471\",\"FirstName\":\"Testador\",\"LastName\":\"doFuturo\",\"EmailAddress\":\"topa@testa.com\",\"LongToken\":\"29636B24413343D492953AA522D49471\",\"IpAddress\":\"171.171.171.171\",\"CreatedDateTime\":\"2020-07-22T00:10:46.930Z\"},\"UdsSessionBindings\":{\"RoutingTable\":{\"BREscritaFiscalApplication\":\"http://localhos:4200/\",\"BREscritaIngestionServices\":\"http://localhos:8080/api/\",\"BREscritaServices\":\"http://localhost:8080/\"},\"FeatureResourcePermissions\":{\"FeatureResourcePermissionsMap\":{}}},\"ApplicationConfiguration\":{\"Licenses\":\"Applications.BRAtendimento,Applications.Onvio,BRAtendimento.AllPermissions,BRAtendimento.CNDEnable,BRAtendimento.CNDView,BRAtendimento.ManifestoEnable,BRAtendimento.ManifestoReview,BRAtendimento.NewsManagement,BRAtendimento.PermissionsAdmin,BRAtendimento.ServiceRequestAssignResponsible,BRAtendimento.ServiceRequestConclusion,BRAtendimento.ServiceRequestEmployee,BRAtendimento.ServiceRequestEvaluation,BRAtendimento.ServiceRequestGeneric,BRAtendimento.ServiceRequestIntern,BRAtendimento.ServiceRequestLeave,BRAtendimento.ServiceRequestManageOthers,BRAtendimento.ServiceRequestPartner,BRAtendimento.ServiceRequestPayrollEntries,BRAtendimento.ServiceRequestPayrollReopen,BRAtendimento.ServiceRequestTerminationCalculation,BRAtendimento.ServiceRequestTerminationNotice,BRAtendimento.ServiceRequestVacationsCalculation,BRAtendimento.ServiceRequestVacationsNotice,BRAtendimento.ServiceRequestViewOthers,BRAtendimento.SetupClientUser,BRAtendimento.SetupNotifications,BRAtendimento.SetupParameters,BRCustos.Platform,BREmployeePortal.BREmployeePortal,BRPayroll.BRPayroll,Onbalance.Linking,Onvio.ClientDashboard,Onvio.DocumentStorage,OnvioDrive.AllDocuments,OnvioDrive.AllPermissions,OnvioDrive.Analytics,OnvioDrive.ApproveDocuments,OnvioDrive.ClientDocuments,OnvioDrive.Comments,OnvioDrive.Documents,OnvioDrive.FirmDocuments,OnvioDrive.LinkUnlock,OnvioDrive.MyDocuments,OnvioDrive.Notifications,OnvioDrive.PermissionsAdmin,OnvioDrive.Projects,OnvioDrive.RecentActivity,OnvioDrive.RecycleBin,OnvioDrive.Requests,OnvioDrive.SendingDocuments,OnvioDrive.Templates,OnvioSetup.AllPermissions,OnvioSetup.Appearances,OnvioSetup.ClientBilling,OnvioSetup.ClientCenterAccess,OnvioSetup.ClientNotifications,OnvioSetup.ClientPeriods,OnvioSetup.Clients,OnvioSetup.CompanyBilling,OnvioSetup.ContactCategories,OnvioSetup.Contacts,OnvioSetup.Departments,OnvioSetup.Engagements,OnvioSetup.Firm,OnvioSetup.FirmPeriods,OnvioSetup.MyPayOnboarding,OnvioSetup.Offices,OnvioSetup.PermissionsAdmin,OnvioSetup.ProjectTemplates,OnvioSetup.Projects,OnvioSetup.SecurityGroups,OnvioSetup.ServiceCharges,OnvioSetup.Setup,OnvioSetup.Staff,OnvioSetup.StaffBillingRates,OnvioSetup.StaffCenterAccess,OnvioSetup.StaffCostRates,OnvioSetup.StaffLevels,OnvioSetup.TermsAndConditions,OnvioSetup.TrackingDescriptions,OnvioSetup.UserPreferences,OnvioSetup.ViewPortal,Platform.BrazilEnabled,Platform.DefaultClient,Platform.DefaultStaff,Platform.OnvioClientAccess,Platform.OnvioStaffAccess,Platform.Reporting,Platform.UberAdmin\",\"TestFirm\":\"false\",\"ContactId\":\"AA14FED3FF6D4593B9C1E7A5CBA582B7\",\"ContabilFirmId\":\"-1\",\"CompanyId\":\"F9DF86D2A44A47DCA3F3FA1F050F7832\",\"CobaltServicesRouteMap\":\"\"},\"InfrastructureAccessControls\":[\"OffPremisesDeployment\",\"Platform_Enable2FA\",\"Platform_EnableTimeOut\",\"PlatformEnableRecaptcha\",\"AccountsIntegrationQB\",\"TimeAndBillingIntegrationQB\",\"TrialBalanceIntegrationQB\",\"WorkpapersIntegrationQB\",\"DMS_Akkadia\",\"BR_APIMenu\",\"BR_DMSFilterClientContacts\",\"BR_HideNewDashboard\",\"ClientCenterHideDiagnosticTool\",\"ClientCenterHideDocsFlatToggle\",\"DMS_DocumentDueDate\",\"DMS_FolderInheritPerms\",\"DMS_FolderTemplateGroupPermissions\",\"DMS_HideFolderTemplateManagement\",\"DMS_PrintUploadV2\",\"DMS_RemovePermanentlyDelete\",\"DMS_ResourceLocking\",\"DMS_ShowClientNickname\",\"DMS_ShowCreateDateColumn\",\"DMS_ShowOpenLocally\",\"DMS_SuppressDocumentLoadingInTree\",\"Firm_Dashboard\",\"IAC-PPE-AllowOverrides\",\"Notifications_DisableUnreadCounts\",\"Platform_CommonPasswordsFilter\",\"Platform_PermissionsLicenseCheck\",\"Platform_SystemGroups\",\"PPE-AccountSwitchingMerge\",\"QuickBooksOnlineIntegrationServices.Access\",\"BR_ConfigureAccountInformation\",\"ClientCenterVnext\",\"Platform_AuditEventServices\",\"PPE-AccountSwitching\",\"DMS_HideSearch\",\"DMS_HideRecentActivity\",\"DMS_HideRecycleBin\",\"DMS_HideOpenLocally\",\"BRNewsAccess\",\"BRBoxEAccess\",\"WorkpapersTickmarks\",\"Platform_EnableMFACards\",\"Platform_GranularPermissions\",\"Platform_AuthAggJWTKey\"]}}",
+        "contentType": "application/json"
+      }
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "POST",
+      "path": "/api/v1/companies/00000000000000000000000000000000/"
+    },
+    "times": {
+      "unlimited": true
+    },
+    "httpResponse": {
+      "statusCode": 200,
+      "body": {
+        "type": "STRING",
+        "string": "{\n\"items\": [\n{\n\"apiVersion\": \"1\",\n\"id\": \"1DDD9D472A054C52B78F29DF303382D0\"\n}\n],\n\"startIndex\": 1,\n\"pageIndex\": 1,\n\"pageLinkTemplate\": \"https://ci.onvio.com.br/api/core/v1/companies/079FA8463BF247BA8B674EE86F0B24BF/contact-views/search?startIndex={index}\",\n\"previousLink\": \"\",\n\"nextLink\": \"\",\n\"apiVersion\": \"1\",\n\"currentItemCount\": 1,\n\"itemsPerPage\": 25,\n\"totalItems\": 1,\n\"totalPages\": 1\n}",
+        "contentType": "application/json"
+      }
+    }
+  },
+  {
+    "httpRequest": {
+      "path": "/favicon.ico"
+    },
+    "httpResponse": {
+      "body": "No Icon, Only Mocks !"
+    }
+  },
+  {
+    "httpRequest": {
+      "path": "/other/source"
+    },
+    "httpResponse": {
+      "body": "Only to Tell !"
+    }
+  }
+]
