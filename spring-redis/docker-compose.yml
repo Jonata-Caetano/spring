@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  redis:
+    image: 'redis:4-alpine'
+    container_name: "redis"
+    command: [sh, -c, "rm -f /data/dump.rdb && redis-server"]  # disable persistence
+    ports:
+      - '6379:6379'
+
+  database:
+    image: postgres:11.8-alpine
+    container_name: "postgres"
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=user
+      - POSTGRES_DB=spring-redis-db
+    command:
+      - "postgres"
+      - "-c"
+      - "effective_cache_size=1024MB"
+    networks:
+      - network-backend
+    volumes:
+      - ./srv/docker/postgresql:/var/lib/postgresql
+      - ./initdb:/docker-entrypoint-initdb.d
+
+networks:
+  network-backend:
+    driver: bridge
