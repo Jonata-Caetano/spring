@@ -9,7 +9,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity
+//@Entity
 public class Account {
 
   @Id
