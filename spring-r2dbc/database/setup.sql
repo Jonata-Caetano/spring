@@ -11,7 +11,7 @@ CREATE TABLE public.client_dependent (
 	client_id int4 NOT NULL,
 	name varchar(40) NOT NULL,
 	CONSTRAINT client_id_fk FOREIGN KEY (client_id)
-	REFERENCES client (client_id)
+	REFERENCES client (id)
 );
 
 insert into public.client
