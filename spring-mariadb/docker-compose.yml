@@ -10,15 +10,12 @@ services:
       MYSQL_DATABASE: mybb
       MYSQL_USER: root
       MYSQL_PASSWORD: changeme
-    logging:
-      driver: syslog
-      options:
-        tag: "{{.DaemonName}}(image={{.ImageName}};name={{.Name}};id={{.ID}})"
     networks:
       - backend
-    restart: on-failure
+    restart: always
     volumes:
-      - ${PWD}/mariadb:/var/lib/mysql
+      - ./mariadb:/var/lib/mysql
+      - ./database:/docker-entrypoint-initdb.d
 
 networks:
   backend:

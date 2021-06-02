@@ -1,5 +1,3 @@
-CREATE DATABASE `test`;
-USE `mybb`;
-
-create table teste(
+CREATE TABLE `mybb.account` (
+	id INTEGER NULL
 );
