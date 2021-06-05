@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    password: password
+    username: root
+    timeout: 10
+    url: 'jdbc:mysql://localhost:3307/spring-cloud-supplier-db'
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
