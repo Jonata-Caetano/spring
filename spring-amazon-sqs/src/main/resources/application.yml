@@ -1,0 +1,12 @@
+cloud:
+  aws:
+    region:
+      static: us-east-1
+      auto: false
+    stack:
+      auto: false
+    credentials:
+      access-key:
+      secret-key:
+    end-point:
+      uri: https://sqs.us-east-1.amazonaws.com/062640588266/tax-spring-boot
