@@ -31,11 +31,9 @@ ext {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
-	implementation 'org.springframework.cloud:spring-cloud-function-adapter-aws'
-	implementation 'com.amazonaws:aws-lambda-java-events:2.0.2'
+	implementation 'org.springframework.boot:spring-boot-starter:2.3.12.RELEASE'
+	implementation 'org.springframework.cloud:spring-cloud-function-adapter-aws:3.0.14.RELEASE'
 	implementation 'com.amazonaws:aws-lambda-java-core:1.1.0'
-	implementation 'commons-io:commons-io:2.5'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
