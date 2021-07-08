@@ -2,7 +2,7 @@
 This example is to show how integrate AWS SQS with Lambda using Java with Spring Boot.
 The sqs-producer folder contains a simple project in spring-boot with a endpoint to send a request, example:
 
-´´´
+```
 curl --location --request POST 'localhost:8080/card-insurance/charged' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -15,7 +15,7 @@ curl --location --request POST 'localhost:8080/card-insurance/charged' \
     "attendingId": "987",
     "complementaryText": "SQS Teste"
 }'
-´´´
+```
 
 The lambda folder is the lambda project using spring-functions.
 
@@ -27,9 +27,9 @@ It's necessary update the application-dev.properties with your access and secret
 Add SQS URL too.
 
 ### How run the application by CLI
-´´´
+```
 ./gradlew bootRun --args='--spring.profiles.active=dev'
-´´´
+```
 
 ## How to configure lambda in AWS
 
