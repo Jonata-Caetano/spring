@@ -9,5 +9,4 @@ public class SpringAmazonLambdaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringAmazonLambdaApplication.class, args);
 	}
-
 }
