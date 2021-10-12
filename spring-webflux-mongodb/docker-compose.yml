@@ -1,0 +1,77 @@
+#version: '3'
+#
+#services:
+#  mongo-express:
+#    image: mongo-express
+#    ports:
+#      - 8081:8081
+#    environment:
+#      ME_CONFIG_BASICAUTH_USERNAME: tiagobm
+#      ME_CONFIG_BASICAUTH_PASSWORD: MongoExpress2019!
+#      ME_CONFIG_MONGODB_PORT: 27017
+#      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+#      ME_CONFIG_MONGODB_ADMINPASSWORD: MongoDB2019!
+#    depends_on:
+#      - mongo
+#    networks:
+#      - mongo-compose-network
+#
+#  mongo:
+#    image: mongo
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: root
+#      MONGO_INITDB_ROOT_PASSWORD: MongoDB2019!
+#    ports:
+#      - "27017:27017"
+#    volumes:
+#      - ./data:/data/db
+#    networks:
+#      - mongo-compose-network
+#
+#networks:
+#  mongo-compose-network:
+#    driver: bridge
+version: "3.5"
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    ports:
+      - "0.0.0.0:27017:27017"
+    networks:
+      - MONGO
+    volumes:
+      - type: volume
+        source: MONGO_DATA
+        target: /data/db
+      - type: volume
+        source: MONGO_CONFIG
+        target: /data/configdb
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: admin
+      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_MONGODB_PORT: "27017"
+    ports:
+      - "0.0.0.0:8081:8081"
+    networks:
+      - MONGO
+    depends_on:
+      - mongo
+
+networks:
+  MONGO:
+    name: MONGO
+
+volumes:
+  MONGO_DATA:
+    name: MONGO_DATA
+  MONGO_CONFIG:
+    name: MONGO_CONFIG
