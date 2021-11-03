@@ -1,0 +1,23 @@
+{
+  "namespace":"com.bmarques.springkafkaavroconsumer",
+  "type":"record",
+  "name":"Merchant",
+  "fields":[
+    {
+      "name": "ID",
+      "type": {
+        "type": "string",
+        "avro.java.string": "String"
+      },
+      "doc": "The id to be related to the merchant"
+    },
+    {
+      "name": "NAME",
+      "type": {
+        "type": "string",
+        "avro.java.string": "String"
+      },
+      "doc": "The merchant name"
+    }
+  ]
+}
