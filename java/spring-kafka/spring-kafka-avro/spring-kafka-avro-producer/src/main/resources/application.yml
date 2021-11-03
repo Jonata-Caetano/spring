@@ -1,0 +1,12 @@
+spring:
+  kafka:
+    bootstrap-servers: 127.0.0.1:29092
+    properties.schema.registry.url: http://127.0.0.1:8081
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+
+auto:
+  create:
+    topics:
+      enable: true
