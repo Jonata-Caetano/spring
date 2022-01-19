@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  database:
+    image: store/oracle/database-enterprise:12.2.0.1
+    container_name: "oracle-invoice-database"
+    ports:
+      - "1521:1521"
+    networks:
+      - network-backend
+#    volumes:
+#      - ./data/OracleDBData:/ORCL # para persistir os dados
+
+volumes:
+  data:
+    driver: local
+
+networks:
+  network-backend:
+    driver: bridge

@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521/ORCLCDB.localdomain
+    username: invoice
+    password: invoice123
+    driver:
+      class-name: oracle.jdbc.OracleDriver
+    hikari:
+      connection-timeout: 40000
+      maximum-pool-size: 20
+      minimum-idle: 5
+      idle-timeout: 30000
+  jpa:
+    show-sql: false
