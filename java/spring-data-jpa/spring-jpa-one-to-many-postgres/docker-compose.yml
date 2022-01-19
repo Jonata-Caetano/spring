@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  database:
+    image: postgres:12.4-alpine
+    container_name: "postgres-start-template"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=start_template_db
+    command:
+      - "postgres"
+      - "-c"
+      - "effective_cache_size=1024MB"
+    networks:
+      - network-backend
+    volumes:
+      - ./srv/docker/postgresql:/var/lib/postgresql
+      - ./database:/docker-entrypoint-initdb.d
+
+volumes:
+  data:
+    driver: local
+
+networks:
+  network-backend:
+    driver: bridge
