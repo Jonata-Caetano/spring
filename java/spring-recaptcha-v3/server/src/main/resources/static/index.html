@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <!-- reCaptcha v3 key to get on https://www.google.com/recaptcha/admin#list -->
+    <script src='https://www.google.com/recaptcha/api.js?render=6Lee7jceAAAAAFOCBEiiHxRrHwtl0MxO1kbIWhIW'></script>
+</head>
+<body>
+<div class="row login">
+
+    <div class="col-md-6 login-form">
+        <h1>Login </h1>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="email">Email address:</label>
+                <input type="email" class="form-control" formControlName="email" id="email">
+                <div *ngIf="submitted && loginForm.controls.email.errors" class="error">
+                    <div *ngIf="loginForm.controls.email.errors.required">Email is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" formControlName="password" id="pwd">
+                <div *ngIf="submitted && loginForm.controls.password.errors" class="error">
+                    <div *ngIf="loginForm.controls.password.errors.required">Password is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="g-recaptcha" data-sitekey="6Lff7WIUAAAAAG2UuSYktpVi2Mz7tB6cgXnO1Tez"></div>
+                <div *ngIf="captchaError" class="error">Recaptcha not verified.</div>
+            </div>
+            <button class="btn btn-default">Login</button>
+            <div *ngIf="invalidLogin" class="error">
+                <div></div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+
+    /*
+        reCaptcha v3 management:
+            https://www.google.com/recaptcha/admin#list
+
+        reCaptcha v3 documentation:
+            https://developers.google.com/recaptcha/docs/v3
+    */
+    var ReCAPTCHAv3Utils = new function() {
+
+        // reCaptcha v3 key to get on https://www.google.com/recaptcha/admin#list
+        var PUBLIC_KEY = '6Lee7jceAAAAAFOCBEiiHxRrHwtl0MxO1kbIWhIW';
+
+        // Requests Google reCAPTCHAv3 API to get token.
+        //
+        // argument:
+        //     action - we can use own label that describe our action
+        //         Look on "Use case" on the https://developers.google.com/recaptcha/docs/v3
+        //         e.g. homepage, login, social, e-commerce
+        //     onSuccess and onError - callback functions
+        //
+        this.request = function(action, onSuccess, onError) {
+            if (window.grecaptcha) {
+                window.grecaptcha.ready(function() {
+                    var config = {
+                        action : action
+                    };
+                    try {
+                        var query = window.grecaptcha.execute(PUBLIC_KEY, config);
+                        if (onSuccess) {
+                            query.then(onSuccess);
+                        }
+                    } catch (e) {
+                        var message = e && e.message || 'Captcha request error.';
+                        if (onError) {
+                            onError(message);
+                        }
+                    }
+                });
+            } else {
+                if (onError) {
+                    onError('reCAPTCHA v3 is not loaded correctly.');
+                }
+            }
+        };
+    };
+
+
+    // Usage example:
+
+    function loginUser(data) {
+        var onSuccess = function(token) {
+            data.token = token; // <------- token received from Google reCAPTCHA v3
+            $.ajax({
+                type: 'POST',
+                url: 'localhost:8080/hello-world',
+                headers: {"g-recaptcha-response": data.token},
+                contentType : 'application/json; charset=utf-8',
+                dataType : 'json',
+                success: function(data) {
+                    alert('Response: ' + data.message);
+                },
+                error: function(error) {
+                    alert('Request error!' + data.message);
+                }
+            });
+        };
+        var onError = function(message) {
+            alert('Error: ' + message);
+        };
+        ReCAPTCHAv3Utils.request('login', onSuccess, onError);
+    }
+
+    loginUser({
+        username: 'John',
+        password: 'my-password-here'
+    });
+
+  </script>
+</body>
+</html>

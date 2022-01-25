@@ -1,0 +1,27 @@
+<app-page-header [title]="'Participant list'">
+  <a class="btn btn-outline-primary" routerLink="/participant/form">
+    Participant Registry
+  </a>
+</app-page-header>
+
+<section>
+  <table class="table table-bordered table-hover table-sm">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Identification Type</th>
+        <th scope="col">Identification Number</th>
+      </tr>
+    </thead>
+    
+      <tr *ngFor="let participant of participantList">
+        <td>{{participant?.id}}</td>
+        <td>{{participant?.name}}</td>
+        <td>{{participant?.registrationType}}</td>
+        <td>{{participant?.registrationNumber}}</td>
+      </tr>
+    
+  </table>
+  
+</section>

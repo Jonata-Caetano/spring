@@ -1,0 +1,39 @@
+<app-page-header [title]="'Participant registry'">
+  <a class="btn btn-outline-primary" routerLink="/participant/list">Participant list</a>
+</app-page-header>
+
+<section>
+  <p class="required_fields">*Required fields</p>
+</section>
+
+<section>
+  <form (ngSubmit)="saveParticipant()">
+    <div class="row">
+      <div class="col-sm-2">
+        <label for="id_contact" class="form-label">ID *</label>
+        <input type="number" class="form-control form-control-sm" id="id_contact" [(ngModel)]="id" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="col-sm-4">
+        <label for="name" class="form-label">Name *</label>
+        <input type="text" class="form-control form-control-sm" id="name" [(ngModel)]="name" [ngModelOptions]="{standalone: true}">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+        <label for="registrationType" class="form-label">Identification Type *</label>
+        <select class="form-control form-control-sm" id="registrationType" [(ngModel)]="registrationType" [ngModelOptions]="{standalone: true}">
+          <option>CPF</option>
+          <option>CNPJ</option>
+        </select>
+      </div>
+      <div class="col-sm-3">
+        <label for="registrationNumber" class="form-label">Identification Type *</label>
+        <input type="text" class="form-control form-control-sm" id="registrationNumber" [(ngModel)]="registrationNumber" [ngModelOptions]="{standalone: true}">
+      </div>
+    </div>
+    <div class="footer-actions fixed-bottom">
+      <button type="submit" class="btn btn-secondary btn-submit" (click)="cancel()">Cancel</button>
+      <button type="submit" class="btn btn-primary btn-submit">Complete registration</button>
+    </div>
+  </form>
+</section>
