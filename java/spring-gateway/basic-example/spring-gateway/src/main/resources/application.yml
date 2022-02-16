@@ -1,0 +1,32 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: merchant-route
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/merchant/**
+            - Method=GET
+        - id: merchant-route
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/merchant/**
+            - Method=DELETE
+          filters:
+            - name: Logging
+              args:
+                baseMessage: My Custom Message
+                preLogger: true
+                postLogger: true
+        - id: order-open-route
+          uri: http://localhost:8082
+          predicates:
+            - Path=/v1/management/api/order/**
+          filters:
+            - RewritePath=/v1/management/api/order/(?<segment>.*), /api/order/$\{segment}
+        - id: order-route
+          uri: http://localhost:8082
+          predicates:
+            - Path=/v1/management/api/order/private/**
+          filters:
+            - RewritePath=/v1/management/api/order/private/(?<segment>.*), /api/order/private/$\{segment}
