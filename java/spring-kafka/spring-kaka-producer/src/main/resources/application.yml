@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/merchant_db
+    username: postgres
+    password: password
+  kafka:
+    bootstrap-servers: 127.0.0.1:29092, 127.0.0.1:29093
+
+auto:
+  create:
+    topics:
+      enable: true
