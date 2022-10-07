@@ -1,3 +1,5 @@
+#Feign Client
+
 api:
   message:
     center:
@@ -12,3 +14,23 @@ feign:
       deviceClient:
         connectTimeout: 5000
         readTimeout: 5000
+
+#resilience4j
+resilience4j.circuitbreaker:
+  instances:
+    invoiceApi:
+      registerHealthIndicator: true
+      minimumNumberOfCalls: 4 #Numero minimo de erros para abrir o Circuit Breaker
+      slidingWindowSize: 8 #Quantidades de requests necessarias para iniciar a amostragem
+      waitDurationInOpenState: 20s #Tempo em que o circuito ficara aberto, apos esse tempo o circuito ira para semi-aberto
+      permittedNumberOfCallsInHalfOpenState: 3 # Numero permitido durante o estado de semi-aberto, caso o continue com erro, volta para aberto, senao vai para fechado
+#    backendB:
+#      registerHealthIndicator: true
+#      slidingWindowSize: 10
+#      permittedNumberOfCallsInHalfOpenState: 3
+#      slidingWindowType: TIME_BASED
+#      minimumNumberOfCalls: 20
+#      waitDurationInOpenState: 50s
+#      failureRateThreshold: 50
+#      eventConsumerBufferSize: 10
+#      recordFailurePredicate: io.github.robwin.exception.RecordFailurePredicate
