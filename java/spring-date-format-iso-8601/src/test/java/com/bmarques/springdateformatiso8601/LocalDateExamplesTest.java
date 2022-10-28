@@ -13,7 +13,7 @@ import java.time.temporal.UnsupportedTemporalTypeException;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.within;
 
-public class DateTimeExamplesTest {
+public class LocalDateExamplesTest {
 
     private Clock clock;
 
