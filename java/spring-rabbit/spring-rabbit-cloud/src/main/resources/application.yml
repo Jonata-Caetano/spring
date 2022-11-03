@@ -1,0 +1,61 @@
+
+spring:
+  cloud:
+    config:
+      override-none: true
+      override-system-properties: false
+    stream:
+      function:
+        definition: 'employeeConsumer'
+        bindings:
+          employeeConsumer-in-0: 'employee-consumer'
+          employeeProducer-out-0: 'employee-producer'
+      binders:
+        rabbit:
+          type: 'rabbit'
+          environment:
+            spring:
+              rabbitmq:
+                addresses: '127.0.0.1:5672'
+                username: 'guest'
+                password: 'guest'
+                virtual-host: '/'
+      bindings:
+        employee-producer:
+          binder: 'rabbit'
+          destination: 'com.bmarques.exchange.spring-rabbit-cloud.employee'
+        employee-consumer:
+          binder: 'rabbit'
+          destination: 'com.bmarques.exchange.spring-rabbit-cloud.employee'
+          group: 'com.bmarques.subscriber.spring-rabbit-cloud.employee'
+          consumer:
+            concurrency: 10
+            max-attempts: 5
+            back-off-multiplier: 1
+            back-off-initial-interval: 10000
+      rabbit:
+        bindings:
+          employee-producer:
+            producer:
+              exchange-type: 'topic'
+              routing-key-expression: '''#'''
+          employee-consumer:
+            consumer:
+              exchange-type: 'topic'
+              bind-queue: true
+              declare-exchange: true
+              queue-name-group-only: true
+              auto-bind-dlq: true
+              republish-to-dlq: true
+              declare-dlx: true
+              missingQueuesFatal: true
+#              dlqTtl: 5000 # TTL to Message
+              dead-letter-queue-name: 'com.bmarques.subscriber.spring-rabbit-cloud.employee-dead-letter'
+              dead-letter-routing-key: 'com.bmarques.event.spring-rabbit-cloud.employee-dead-letter'
+              dead-letter-exchange: 'com.bmarques.exchange.spring-rabbit-cloud.employee-dead-letter'
+              dead-letter-exchange-type: 'topic'
+              dlq-dead-letter-routing-key: 'com.bmarques.event.spring-rabbit-cloud.employee-dead-letter'
+              dlq-dead-letter-exchange: 'com.bmarques.exchange.spring-rabbit-cloud.employee-dead-letter'
+
+binding-destination:
+  employee-producer: '${spring.cloud.stream.function.bindings.employeeProducer-out-0}'

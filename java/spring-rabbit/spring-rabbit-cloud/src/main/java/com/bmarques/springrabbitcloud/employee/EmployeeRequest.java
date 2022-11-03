@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class EmployeeEvent {
+public class EmployeeRequest {
 
     private String empName;
     private String empID;

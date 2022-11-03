@@ -1,4 +1,4 @@
-package com.bmarques.springrabbitcloud;
+package com.bmarques.springrabbitcloud.employee;
 
 import java.util.function.Consumer;
 
@@ -18,6 +18,6 @@ public class EmployeeListener {
 
     @Bean
     public Consumer<Message<EmployeeEvent>> sendEmployee() {
-        return this.employeeService::getEmployee;
+        return message -> this.employeeService.getEmployee(message);
     }
 }
